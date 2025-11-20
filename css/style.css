@@ -1,18 +1,8 @@
 body {
     margin: 0;
     font-family: sans-serif;
-    background: #E9ECFA; /* fond clair pour toute la page */
+    background: #E9ECFA; /* fond clair */
     color: #3A3631;
-}
-
-/* HERO */
-.hero {
-    position: relative;
-    height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #3A3631; /* fond sombre uniquement pour le hero */
 }
 
 /* HEADER */
@@ -67,10 +57,12 @@ nav a {
 /* HERO */
 .hero {
     position: relative;
+    padding-right: 20%;
     height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #3A3631;
 }
 
 /* HERO CONTENT */
@@ -88,7 +80,7 @@ nav a {
     border-radius: 50%;
     background: url("images/ppLinkedin.jpg") no-repeat center/cover;
     border: 5px solid #A3ABD9;
-    margin-left: -40px; /* légèrement plus à gauche */
+    margin-left: -40px;
 }
 
 /* TEXTE */
@@ -96,15 +88,37 @@ nav a {
 .hero-text p {
     max-width: 500px;
     line-height: 1.5;
+    color: #E9ECFA;
 }
 
 /* CÂBLE GLOBAL */
 .cable-svg {
-    position: fixed; /* traverse toute la page */
+    position: fixed;
     left: 40px;
     top: 0;
     width: 50px;
     height: 100%;
     z-index: 1;
-    pointer-events: none; /* laisse passer les clics */
+    pointer-events: none;
+}
+
+/* FOOTER */
+footer {
+    background: #3A3631;
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+}
+footer a {
+    color: #BDCAF2;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+.content, .content-container{
+    height: 100%;
+}
+
+.content p {
+    margin: 0;
 }
