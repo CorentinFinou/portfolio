@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #E9ECFA; /* fond clair pour toute la page */
+    color: #3A3631;
+}
+
+/* HERO */
+.hero {
+    position: relative;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #3A3631; /* fond sombre uniquement pour le hero */
+}
+
+/* HEADER */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1000;
+}
+header .burger-container { padding: 1.2rem; }
+
+/* BURGER */
+.burger {
+    width: 30px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 1010;
+}
+.burger span {
+    height: 3px;
+    background: #BDCAF2;
+    width: 100%;
+    display: block;
+    border-radius: 3px;
+}
+
+/* MENU */
+nav {
+    position: fixed;
+    top: 0;
+    right: -200px;
+    width: 200px;
+    height: 100%;
+    background: #3A3631;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: right 0.3s ease;
+    z-index: 1005;
+}
+nav a {
+    color: #BDCAF2;
+    text-decoration: none;
+    padding-left: 20px;
+}
+
+/* HERO */
+.hero {
+    position: relative;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* HERO CONTENT */
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    z-index: 2;
+}
+
+/* IMAGE RONDE */
+.profile-pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: url("images/ppLinkedin.jpg") no-repeat center/cover;
+    border: 5px solid #A3ABD9;
+    margin-left: -40px; /* légèrement plus à gauche */
+}
+
+/* TEXTE */
+.hero-text h1,
+.hero-text p {
+    max-width: 500px;
+    line-height: 1.5;
+}
+
+/* CÂBLE GLOBAL */
+.cable-svg {
+    position: fixed; /* traverse toute la page */
+    left: 40px;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none; /* laisse passer les clics */
+}
