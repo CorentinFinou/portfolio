@@ -1,0 +1,128 @@
+.realisation-hero {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary);
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.realisation-hero h1 {
+    font-size: 3rem;
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+}
+
+.realisation-hero p {
+    font-size: 1.3rem;
+    color: var(--color-secondary);
+}
+
+.project-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.detail-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.detail-card h3 {
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.detail-card p {
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.project-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.project-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary);
+}
+
+.project-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: #666;
+}
+
+.project-content ul {
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+}
+
+.project-content li {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 0.8rem;
+    color: #666;
+}
+
+.project-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.project-image-placeholder {
+    width: 100%;
+    height: 250px;
+    background: var(--color-light);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+    font-size: 4rem;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+    .realisation-hero h1 {
+        font-size: 2rem;
+    }
+
+    .project-details {
+        grid-template-columns: 1fr;
+    }
+
+    .project-images {
+        grid-template-columns: 1fr;
+    }
+}
