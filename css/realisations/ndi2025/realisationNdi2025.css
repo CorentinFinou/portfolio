@@ -1,10 +1,11 @@
 .realisation-hero {
-    min-height: 50vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url("../../images/realisations/ndi2025/siteNDIGeneral.png") no-repeat;
+    background: url("../../images/realisations/ndi2025/NDI-2025-45.jpg") no-repeat;
     background-size: cover;
+    background-position: center;
     padding: 2rem;
     position: relative;
     z-index: 2;

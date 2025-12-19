@@ -40,15 +40,16 @@
         <div class="project-details">
             <div class="detail-card">
                 <h3>Rôle</h3>
-                <p>Développeur back-end</p>
+                <p>Développeur back-end sécurisation</p>
             </div>
             <div class="detail-card">
                 <h3>Équipe</h3>
-                <p>10 développeurs</p>
+                <p>5 développeurs</p>
+                <p>Agile-Scrum</p>
             </div>
             <div class="detail-card">
                 <h3>Technologies</h3>
-                <p>Java, SpringBoot, OpenAPI</p>
+                <p>Java, Sockets, RSA, FXML</p>
             </div>
         </div>
     </section>
@@ -57,8 +58,8 @@
         <h2 class="section-title">Contexte du projet</h2>
         <div class="project-content">
             <p>
-                Dans le cadre du BUT, nous avons développé une implémentation partielle du jeu <strong>Pokemon Trading Card Game</strong> en utilisant <strong>Java</strong>.
-                Ce projet nous a permis de mettre en pratique nos compétences en programmation orientée objet (POO) et en développement d'interfaces graphiques avec <strong>JavaFX</strong>.
+                La spécialisation <strong>DACS</strong> (Déploiement d'Applications Communicantes et Sécurisées) propose une <strong>SAE</strong> (Situation d'Apprentissage et d'Evaluation) sur deux semestres.
+                Lors du premier semestre, nous avons dû développer une application d'enchères de Vickrey en réseau <strong>sécurisée</strong> avec Java.
             </p>
         </div>
     </section>
@@ -67,37 +68,53 @@
         <h2 class="section-title">Ce que j'ai fait</h2>
         <div class="project-content">
             <p>
-                Ce projet était très axé sur la programmation orientée objet. Connaissant cette technologie depuis plus de temps que mon coéquipier,
-                j'ai pu prendre plus de responsabilités dans la conception de l'architecture du code et la mise en place des classes principales.
-                J'ai aussi eu le rôle de développer la plupart des fonctionnalités "complexes" du jeu, qui utilisaient de nouveaux concepts.
+                Lors de ce projet, j'ai eu la responsabilité de développer la partie sécurisation des échanges entre le client et le serveur.
+                Je me suis porté volontaire pour prendre cette responsabilité car cette tâche était technique et très liée avec ma spécialisation DACS, ce qui la rendait plus intéressante pour moi.
             </p>
-            <p>Exemples de fonctions clés :</p>
+            <p>Pour réaliser cette tâche, j'ai d'abord utilisé la librairie Java SSLSocket :</p>
             <div class="trace-images-container">
                 <div class="trace-image-container">
-                    <img src="../css/images/realisations/pkmTCG/choisir.png" alt="fonctionChoisir" class="project-image">
-                    <p>Fonction choisir</p>
-                </div>
-                <div class="trace-image-container">
-                    <img src="../css/images/realisations/pkmTCG/getAttaquesPossibles.png" alt="fonctionChoisir" class="project-image">
-                    <p>Fonction getAttaquesPossibles</p>
+                    <img src="../css/images/realisations/encheres/startSockets.png" alt="fonctionStart" class="project-image">
                 </div>
             </div>
 
             <p>
-                De la même manière, lors de la création de la partie interface graphique, j'ai eu la responsabilité de développer les parties les plus techniques.
-                J'ai pu alors manipuler de manière plus concrète les principes MVC (Modèle-Vue-Contrôleur) et les fonctionnalités de triggers, listencers, etc... de JAVAFX.
+                Puis j'ai implémenté un système de chiffrement RSA pour sécuriser l'envoi des montant d'enchères entre du client vers le serveur.
             </p>
-            <p>Exemples de fonctions clés :</p>
             <div class="trace-images-container">
                 <div class="trace-image-container">
-                    <img src="../css/images/realisations/pkmTCG/bindCartePorkemon.png" alt="fonctionBindCarte" class="project-image">
-                    <p>Fonction de bindings</p>
+                    <img src="../css/images/realisations/encheres/chiffrerMontant.png" alt="fonctionChiffrer" class="project-image">
+                    <p>Fonction de chiffrement</p>
                 </div>
                 <div class="trace-image-container">
-                    <img src="../css/images/realisations/pkmTCG/placerBanc.png" alt="fonctionPlacerBanc" class="project-image">
-                    <p>Fonction placement du banc</p>
+                    <img src="../css/images/realisations/encheres/déchiffrerMontant.png" alt="fonctionDechiffrer" class="project-image">
+                    <p>Fonction de déchiffrement</p>
                 </div>
             </div>
+            <p>
+                Ainsi qu'un système de singature numérique pour garantir l'authenticité des messages échangés.
+            </p>
+            <div class="trace-images-container">
+                <div class="trace-image-container">
+                    <img src="../css/images/realisations/encheres/signer.png" alt="fonctionSigner" class="project-image">
+                    <p>Fonction de signature numérique</p>
+                </div>
+                <div class="trace-image-container">
+                    <img src="../css/images/realisations/encheres/verifSignature.png" alt="fonctionVerifier" class="project-image">
+                    <p>Fonction de vérification de signature</p>
+                </div>
+            </div>
+            <p>
+                Etant assez à l'aise avec les différents concepts utilisés durant le développement de ce projet, j'ai aussi eu un rôle important d'aide envers mes coéquipiers, concernant tous
+                les aspects techniques du projet. La gestion de la base de données, la mise en place des différents composants FXML, et surtout la gestion de Git, où je me suis occupé de
+                tous les merges et résolutions de conflits aux moments critiques du projet.
+            </p>
+            <p>
+                Côté technique, ce projet m'a beaucoup appris sur les échanges réseau et leur sécurisation. J'ai aussi pu utiliser activement mes connaissances en Java et SQL afin de réaliser
+                un code de qualité respectant les principes SOLID. <br>
+                Côté humain, ce projet m'a permis de me familiariser avec le travail en équipe en mode Agile-Scrum, mais aussi et surtout de réaliser mes compétences en gestion de projet,
+                n'étant pas Product Owner à la base, j'ai tout de même su prendre des initiatives pour me placer en aide précieuse pour toute mon équipe.
+            </p>
         </div>
     </section>
 
@@ -105,13 +122,11 @@
         <h2 class="section-title">Résultats</h2>
         <div class="project-content">
             <p>
-                Les deux parties du projet ont été un succés, nous avons été très satisfait du résultat final, toutes les fonctionnalités demandées ont été implémentées, et l'interface
-                graphique nous plaisait visuellement tout en étant fonctionnelle.
-                Ce projet m'a permis de renforcer mes compétences en Java et en POO, ainsi que d'acquérir une expérience conséquente dans le développement d'interfaces graphiques avec JavaFX.
+                Nous avons réalisé une application d'enchères, toujours en développement, actuellement sécurisée et fonctionnelle.
             </p>
             <div class="trace-images-container">
                 <div class="trace-image-container">
-                    <img src="../css/images/realisations/pkmTCG/pkmTCGGeneral.png" alt="pkmTCGGeneral" class="project-image">
+                    <img src="../css/images/realisations/encheres/AppliEnchereGeneral.png" alt="pkmTCGGeneral" class="project-image">
                 </div>
             </div>
         </div>
