@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url("images/Fond_foret.png") no-repeat;
+    background: url("images/pkmTCG/pkmTCGGeneral.png") no-repeat;
     background-size: cover;
     padding: 2rem;
     position: relative;
