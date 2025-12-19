@@ -41,6 +41,8 @@ const getSplitPoints = () => {
     return splitPoints;
 };
 
+// ... (Le début de votre fichier reste inchangé jusqu'à animateCable)
+
 function animateCable() {
     const h = document.body.scrollHeight;
     const w = window.innerWidth;
@@ -48,7 +50,14 @@ function animateCable() {
     const cycleDuration = 10000;
     const waveLength = 150;
     const amplitude = 10;
-    const cableColor = "#A68521";
+
+    // --- VOTRE COULEUR ---
+    const mainColor = "#A3ABD9";
+
+    const cableColor = mainColor; // Le câble au repos
+    const glowColor = mainColor;  // La lumière de la vague
+    // ---------------------
+
     const waveFrequency = 20;
     const branchWidthRatio = 0.38;
 
@@ -57,7 +66,17 @@ function animateCable() {
     const svg = document.querySelector('.cable-svg');
     if (!svg) return;
 
-    svg.innerHTML = '';
+    // 1. Définition du filtre de lueur (douce)
+    const defsContent = `
+        <defs>
+            <filter id="soft-glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+            </filter>
+        </defs>
+    `;
+
+    svg.innerHTML = defsContent;
+
     svg.setAttribute('height', h);
     svg.setAttribute('width', w);
     svg.style.width = '100%';
@@ -66,10 +85,9 @@ function animateCable() {
     const progress = (animationTime % cycleDuration) / cycleDuration;
     const waveCenter = progress * h;
     const splitPoints = getSplitPoints();
-
     const branchEndX = w * branchWidthRatio;
 
-    // Fonction pour calculer l'offset de vague
+    // Fonction Wave Offset
     const getWaveOffset = (position) => {
         const distanceFromWave = Math.abs(position - waveCenter);
         if (distanceFromWave < waveLength / 2) {
@@ -80,39 +98,67 @@ function animateCable() {
         return 0;
     };
 
-    // Câble principal (gauche)
+    // --- CÂBLE VERTICAL (GAUCHE) ---
     let mainPath = '';
+    let glowPath = '';
+    let wasInWave = false;
 
     for (let i = 0; i <= steps; i++) {
         const y = (i / steps) * h;
         const waveOffset = getWaveOffset(y);
         const xLeft = 23 + waveOffset;
 
-        if (mainPath === '') {
-            mainPath = `M${xLeft},${y}`;
+        // Câble entier
+        if (i === 0) mainPath = `M${xLeft},${y}`;
+        else mainPath += ` L${xLeft},${y}`;
+
+        // Segment de la vague (pour le glow)
+        const distanceFromWave = Math.abs(y - waveCenter);
+        if (distanceFromWave < waveLength / 2) {
+            if (!wasInWave) {
+                glowPath += `M${xLeft},${y}`;
+                wasInWave = true;
+            } else {
+                glowPath += `L${xLeft},${y}`;
+            }
         } else {
-            mainPath += ` L${xLeft},${y}`;
+            wasInWave = false;
         }
     }
 
-    // Dessiner le câble gauche
-    if (mainPath) {
+    // Fonction utilitaire pour dessiner
+    const drawPath = (d, color, width, filter = null, opacity = 1) => {
+        if (!d) return;
         const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        path.setAttribute("d", mainPath);
-        path.setAttribute("stroke", cableColor);
-        path.setAttribute("stroke-width", "4");
+        path.setAttribute("d", d);
+        path.setAttribute("stroke", color);
+        path.setAttribute("stroke-width", width);
         path.setAttribute("fill", "none");
         path.setAttribute("stroke-linecap", "round");
         path.setAttribute("stroke-linejoin", "round");
+        if (filter) path.setAttribute("filter", filter);
+        if (opacity < 1) path.setAttribute("opacity", opacity);
         svg.appendChild(path);
-    }
+    };
 
-    // Dessiner les branches horizontales
+    // 1. Dessiner le câble physique (Base)
+    drawPath(mainPath, cableColor, "4");
+
+    // 2. Dessiner le Halo (Flou et transparent)
+    // Opacité à 0.6 pour que le glow soit visible sur cette couleur claire
+    drawPath(glowPath, glowColor, "12", "url(#soft-glow)", 0.6);
+
+    // 3. Dessiner le Cœur de l'énergie (Net)
+    drawPath(glowPath, glowColor, "4");
+
+
+    // --- BRANCHES HORIZONTALES ---
     splitPoints.forEach(splitY => {
         const horizontalSteps = 250;
         let horizontalPath = '';
+        let horizontalGlowPath = '';
+        let hWasInWave = false;
 
-        // Le point de départ X suit le câble
         const splitWaveOffset = getWaveOffset(splitY);
         const startX = 25 + splitWaveOffset;
         const branchLength = branchEndX - startX;
@@ -120,33 +166,33 @@ function animateCable() {
         for (let i = 0; i <= horizontalSteps; i++) {
             const progressHorizontal = i / horizontalSteps;
             const x = startX + (branchLength * progressHorizontal);
-
-            // Position équivalente pour la vague
             const equivalentPosition = splitY + (progressHorizontal * branchLength);
             const waveOffset = getWaveOffset(equivalentPosition);
-
-            // Y reste STRICTEMENT horizontal à splitY
-            // La vague ne fait qu'onduler la ligne, pas la déplacer
             const y = splitY + waveOffset;
 
-            if (i === 0) {
-                horizontalPath = `M${x},${y}`;
+            if (i === 0) horizontalPath = `M${x},${y}`;
+            else horizontalPath += ` L${x},${y}`;
+
+            // Calcul du glow
+            const distFromWave = Math.abs(equivalentPosition - waveCenter);
+            if (distFromWave < waveLength / 2) {
+                if (!hWasInWave) {
+                    horizontalGlowPath += `M${x},${y}`;
+                    hWasInWave = true;
+                } else {
+                    horizontalGlowPath += `L${x},${y}`;
+                }
             } else {
-                horizontalPath += ` L${x},${y}`;
+                hWasInWave = false;
             }
         }
 
-        // Dessiner la branche horizontale
-        if (horizontalPath) {
-            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-            path.setAttribute("d", horizontalPath);
-            path.setAttribute("stroke", cableColor);
-            path.setAttribute("stroke-width", "3");
-            path.setAttribute("fill", "none");
-            path.setAttribute("stroke-linecap", "round");
-            path.setAttribute("stroke-linejoin", "round");
-            svg.appendChild(path);
-        }
+        // Dessin des branches
+        drawPath(horizontalPath, cableColor, "3");
+        // Halo horizontal
+        drawPath(horizontalGlowPath, glowColor, "10", "url(#soft-glow)", 0.6);
+        // Cœur horizontal
+        drawPath(horizontalGlowPath, glowColor, "3");
     });
 
     requestAnimationFrame(animateCable);
