@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('images/finou/imageHero.png') no-repeat center center;
+    background: url('../images/index/imageHero.png') no-repeat center center;
     background-size: cover;
     padding: 0 2rem;
     position: relative;
@@ -36,7 +36,7 @@
     width: 220px;
     height: 220px;
     border-radius: 50%;
-    background: url('images/finou/ppLinkedin.jpg') no-repeat center/cover;
+    background: url('../images/index/ppLinkedin.jpg') no-repeat center/cover;
     border: 6px solid var(--color-accent);
     flex-shrink: 0;
 }
