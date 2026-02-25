@@ -24,8 +24,11 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
-    margin-bottom: 3rem;
-    padding: 20px;
+    padding: 15px;
+}
+
+.comp {
+    text-align: center;
 }
 
 .detail-card {
@@ -151,4 +154,16 @@
     .project-images {
         grid-template-columns: 1fr;
     }
+}
+.realisation-hero {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+    text-align: center;
 }
